@@ -1,0 +1,27 @@
+{
+    "variables": {
+        "version": ""
+    },
+    "builders":[{
+        "type": "docker",
+        "image": "ubuntu:14.04",
+        "pull": true,
+        "export_path": "ubuntu-base-{{user `version`}}.tar"
+    }],
+    "provisioners":[
+        {
+            "type": "shell",
+            "inline": [
+                "apt-get update",
+                "apt-get -yq install ansible python-setuptools"
+            ]
+        },
+        {
+            "type": "ansible-local",
+            "playbook_file": "playbooks/local.yml",
+            "role_paths":[
+                "roles/common"
+            ]
+        }
+    ]
+}
