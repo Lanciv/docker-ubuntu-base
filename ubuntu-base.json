@@ -13,7 +13,7 @@
             "type": "shell",
             "inline": [
                 "apt-get update",
-                "apt-get -yq install ansible python-setuptools"
+                "apt-get -yq install ansible python-setuptools python-apt"
             ]
         },
         {
